@@ -36,37 +36,29 @@
                 </div>
                 <?php
                     include("includes/database.inc.php");
+                    $join_str = isset($_GET['id']) ?
+                                "AND movie_id = {$_GET['id']}" : "";
+                    $query = "SELECT s.id, s.screening_date, s.screening_time, s.movie_id, m.poster_url, m.title
+                              FROM screenings s
+                              INNER JOIN films m on s.movie_id = m.id
+                              WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
+                              {$join_str}
+                              ORDER BY screening_date, screening_time";
 
-                    if (isset($_GET["id"]))
+                    $result = mysqli_query($conn, $query);
+                    while ($row = mysqli_fetch_assoc($result))
                     {
-                        $movie_id = $_GET["id"];
-                        $sql = "SELECT * FROM screenings WHERE movie_id = {$movie_id} AND screening_date  BETWEEN '{$startDate}' AND '{$endDate}' ORDER BY screening_date, screening_time";
-                    }
-                    else
-                    {
-                        $sql = "SELECT * FROM screenings WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}' ORDER BY screening_date, screening_time";
-                    }
+                        $formatted_date = date("F j", strtotime($row['screening_date']));
+                        $formatted_time = date("g:i A", strtotime($row['screening_time']));
 
-                    $result = mysqli_query($conn, $sql);
-
-                    if (mysqli_num_rows($result) > 0)
-                    {
-                        while ($row = mysqli_fetch_assoc($result))
-                        {
-                            $query = "SELECT * FROM films WHERE id = {$row['movie_id']}";
-                            $movie = mysqli_fetch_assoc(mysqli_query($conn, $query));
-
-                            $formatted_date = date("F j", strtotime($row['screening_date']));
-                            $formatted_time = date("g:i A", strtotime($row['screening_time']));
-                            echo "<a href=\"movies.php?id={$row['movie_id']}\">";
+                        echo "<a href=\"movies.php?id={$row['movie_id']}\">";
                             echo "<div class=\"list-row\">";
-                                echo "<img class=\"poster\" src=\"" . $movie['poster_url'] . "\">"; 
-                                echo "<p>" . $movie['title'] . "</p>";
-                                echo "<p>" . $formatted_date . "</p>";
-                                echo "<p>" . $formatted_time . "</p>";
+                                echo "<img class=\"poster\" src=\"{$row['poster_url']}\">"; 
+                                echo "<p>{$row['title']}</p>";
+                                echo "<p>{$formatted_date}</p>";
+                                echo "<p>{$formatted_time}</p>";
                             echo "</div>";
-                            echo "</a>";
-                        }
+                        echo "</a>";
                     }
                     
                     mysqli_close($conn);

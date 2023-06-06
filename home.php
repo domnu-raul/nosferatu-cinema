@@ -17,13 +17,13 @@
                 <?php
                     include("includes/database.inc.php");
 
-                    $sql = "SELECT s.id, s.movie_id, s.screening_date,
-                            m.title, m.director, m.poster_url, m.description, m.duration
-                            FROM screenings s
-                            INNER JOIN films m ON s.movie_id = m.id
-                            WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
-                            GROUP BY s.movie_id";
-                    $result = mysqli_query($conn, $sql);
+                    $query = "SELECT s.id, s.movie_id, s.screening_date,
+                              m.title, m.director, m.poster_url, m.description, m.duration
+                              FROM screenings s
+                              INNER JOIN films m ON s.movie_id = m.id
+                              WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
+                              GROUP BY s.movie_id";
+                    $result = mysqli_query($conn, $query);
 
                     while ($row = mysqli_fetch_assoc($result))
                     {

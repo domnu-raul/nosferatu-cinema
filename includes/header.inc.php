@@ -13,13 +13,13 @@
         {
             if ($_SESSION['user'] === 'admin')
             {
-                echo '<li name="dashboard-button"><a href="dashboard.php">' . "Dashboard" . "</a></li>";
+                echo "<li name=\"dashboard-button\"><a href=\"dashboard.php\">Dashboard</a></li>";
             }
-            echo '<li><a href="functions/sign-out.script.php">' . 'Sign Out' . "</a></li>";
+            echo "<li><a href=\"functions/sign-out.script.php\">Sign Out</a></li>";
         }
         else
         {
-            echo '<li name="sign-in-button"><a href="sign-in.php">Sign In</a></li>' ;
+            echo "<li name=\"sign-in-button\"><a href=\"sign-in.php\">Sign In</a></li>";
         }
         ?>
     </ul>

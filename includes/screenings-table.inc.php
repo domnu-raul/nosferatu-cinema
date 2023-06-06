@@ -91,6 +91,7 @@
         $sql = "SELECT s.id, s.movie_id, m.title, s.screening_date, s.screening_time, m.poster_url, m.duration
                 FROM screenings s
                 INNER JOIN films m ON s.movie_id = m.id";
+
         if (isset($_GET['search'])) {
             $search_string = urldecode($_GET['search']);
             $sql = "{$sql} WHERE m.title LIKE LOWER('%{$search_string}%')";
@@ -120,13 +121,14 @@
 
             $odd_even = $i % 2 == 0 ? 'even-row' : 'odd-row';
             echo "<tr data-id=\"{$row['id']}\" class=\"{$odd_even}\">";
-            echo "<td class=\"delete-column\"><button onclick=\"delete_screening(this)\"><img src=\"assets/delete-icon.png\" class=\"delete-icon\"></button></td>";
-            echo "<td>{$row['id']}</td>";
-            echo "<td>{$row['movie_id']}</td>";
-            echo "<td>{$row['title']}</td>";
-            echo "<td>{$formatted_date}</td>";
-            echo "<td>{$formatted_time}</td>";
-            echo "<td class=\"poster-column\"><img class=\"poster-img\" src={$row['poster_url']}></td>";
+                echo "<td class=\"delete-column\"><button onclick=\"delete_screening(this)\">
+                      <img src=\"assets/delete-icon.png\" class=\"delete-icon\"></button></td>";
+                echo "<td>{$row['id']}</td>";
+                echo "<td>{$row['movie_id']}</td>";
+                echo "<td>{$row['title']}</td>";
+                echo "<td>{$formatted_date}</td>";
+                echo "<td>{$formatted_time}</td>";
+                echo "<td class=\"poster-column\"><img class=\"poster-img\" src={$row['poster_url']}></td>";
             echo "</tr>";
             $i++;
         }

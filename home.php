@@ -17,15 +17,15 @@
                 <?php
                     include("includes/database.inc.php");
 
-                    $query = "SELECT s.id, s.movie_id, s.screening_date,
+                    $sql = "SELECT s.id, s.movie_id, s.screening_date,
                               m.title, m.director, m.poster_url, m.description, m.duration
                               FROM screenings s
                               INNER JOIN films m ON s.movie_id = m.id
                               WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
                               GROUP BY s.movie_id";
-                    $result = mysqli_query($conn, $query);
+                    $result = $conn->query($sql);
 
-                    while ($row = mysqli_fetch_assoc($result))
+                    while ($row = $result->fetch_assoc())
                     {
                         echo "<a class=\"movie\" href=\"movies.php?id=" . $row["movie_id"] . "\">";
                             echo "<img src=\"{$row['poster_url']}\" class=\"poster\">";
@@ -35,7 +35,7 @@
                             echo "<h2 class=\"runtime\">Runtime<br>{$row['duration']} minutes</h2>";
                         echo "</a>";
                     }
-                    mysqli_close($conn);
+                    $conn->close();
                 ?>
             </div>
             <div class="footer"></div>

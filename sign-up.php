@@ -30,7 +30,7 @@
         <div class="wrapper">
             <section class="form">
                 <h2>Sign Up</h2>
-                <form action="php_scripts/sign-up.script.php" method="post">
+                <form action="functions/sign-up.script.php" method="post">
                     <input type="text" name="username" placeholder="Enter username..." id="uid">
                     <input type="password" name="password" placeholder="Enter password..." id="pass">
                     <input type="password" name="password-confirm" placeholder="Confirm password..." id="pass">
@@ -49,7 +49,6 @@
                     }
                     else if (strcmp($_GET['error'], 'user-already-exists') == 0)
                     {
-
                         echo "<p>Username already taken.</p>";
                     }
                 }

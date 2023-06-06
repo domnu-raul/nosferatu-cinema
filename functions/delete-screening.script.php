@@ -5,7 +5,7 @@ $id = $_POST['id'];
 $sql = "DELETE FROM screenings WHERE id = {$id}";
 $conn->query($sql);
 
-mysqli_close($conn);
+$conn->close();
 
 echo 'success';
 ?>

@@ -8,10 +8,10 @@ if (!is_numeric($tmdb_id))
     exit();
 }
 
-$query = "SELECT * FROM films WHERE id = {$tmdb_id}";
-$result = mysqli_query($conn, $query);
+$sql = "SELECT * FROM films WHERE id = {$tmdb_id}";
+$result = $conn->query($sql);
 
-if (mysqli_num_rows($result) > 0)
+if ($result->num_rows > 0)
 {
     echo "error;Movie already in database.";
     exit();
@@ -54,7 +54,9 @@ foreach ($credits_data['crew'] as $person) {
 }
 
 $poster_url = "https://image.tmdb.org/t/p/w342{$movie_data['poster_path']}";
-$stmt = $conn->prepare("INSERT INTO films (id, title, description, duration, director, poster_url) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt = $conn->prepare("INSERT INTO films (id, title, description, duration, director, poster_url)
+                        VALUES (?, ?, ?, ?, ?, ?)");
+
 $stmt->bind_param("isssss", $tmdb_id, $title, $description, $duration, $director, $poster_url);
 $stmt->execute();
 

@@ -61,7 +61,7 @@
                         echo "</a>";
                     }
                     
-                    mysqli_close($conn);
+                    $conn->close();
                 ?>
             </div>
             <div class="footer">

@@ -1,0 +1,56 @@
+body {
+    overflow: hidden;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.form {
+    grid-column: 2;
+    grid-row: 3;
+    width: 300px;
+    text-align: center;
+    background-color: var(--second-bg-color);
+    padding: 20px 20px 20px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--text-color);
+    justify-self: center;
+}
+
+.form h2 {
+    margin: 0;
+    margin-bottom: 15px;
+    font-size: larger;
+    font-weight: bold;
+}
+
+.form form {
+    justify-self: center;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows: 1fr;
+    gap: 20px;
+}
+
+.form input {
+    grid-column: 1 / span 2;
+}
+
+.form input , button{
+    border-radius: 5px;
+    padding: 10px 10px 10px 10px;
+    background-color: var(--bg-color);
+    border: 1px solid var(--text-color);
+    color: var(--text-color);
+}
+
+.form button {
+    transition: background-color 0.4s;
+}
+
+.form button:hover {
+    cursor: pointer;
+    background-color: var(--cyan-color);
+}

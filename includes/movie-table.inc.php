@@ -51,7 +51,8 @@
         }
         $sort_query = isset($_GET['sort']) ? "ORDER BY {$_GET['sort']}" : "";
 
-        $sql = "SELECT * FROM films {$search_query} {$sort_query} LIMIT {$offset}, {$entries_per_page}";
+        $sql = "SELECT * FROM films {$search_query} {$sort_query}
+                LIMIT {$offset}, {$entries_per_page}";
         $result = $conn->query($sql);
 
         $sql = "SELECT COUNT(*) as total from films {$search_query}";

@@ -84,17 +84,17 @@
     <tbody>
         <?php
         include("database.inc.php");
-        $count = 20;
-        $page = isset($_GET['page']) ? $_GET['page'] : 1;
-        $start = ($page - 1) * $count;
 
-        $sql = "SELECT s.id, s.movie_id, m.title, s.screening_date, s.screening_time, m.poster_url, m.duration
-                FROM screenings s
-                INNER JOIN films m ON s.movie_id = m.id";
+        $entries_per_page = 20;
+        $page_num = isset($_GET['page']) ? $_GET['page'] : 1;
+        $offset = ($page_num - 1) * $entries_per_page;
 
-        if (isset($_GET['search'])) {
+        $search_query = "";
+        $sort_term = "";
+        if (isset($_GET['search']))
+        {
             $search_string = urldecode($_GET['search']);
-            $sql = "{$sql} WHERE m.title LIKE LOWER('%{$search_string}%')";
+            $search_query = "WHERE m.title LIKE LOWER('%{$search_string}%')";
         }
 
         if (isset($_GET['sort']))
@@ -102,20 +102,19 @@
         else
             $sort_term = 'screening_date DESC, screening_time DESC';
 
-        $sql = "{$sql} ORDER BY {$sort_term}";
-        $result = mysqli_query($conn, $sql);
-        $row_count = mysqli_num_rows($result);
+        $sql = "SELECT s.id, s.movie_id, m.title, s.screening_date, s.screening_time, m.poster_url, m.duration
+                FROM screenings s
+                INNER JOIN films m ON s.movie_id = m.id {$search_query}
+                ORDER BY {$sort_term}
+                LIMIT {$offset}, {$entries_per_page}";
+        $result = $conn->query($sql);
 
-        $i = 0;
-        $start_index = 0;
+        $sql = "SELECT COUNT(s.movie_id) as total FROM screenings s
+                INNER JOIN films m ON s.movie_id = m.id {$search_query}";
+        $total_results = $conn->query($sql)->fetch_assoc()['total'];
 
-        while ($start_index < $start) {
-            $start_index++;
-            if ($row = mysqli_fetch_assoc($result)) continue;
-            else break;
-        }
-
-        while ($row = mysqli_fetch_assoc($result) and $i < $count) {
+        for ($i = 0; $row = $result->fetch_assoc(); $i++)
+        {
             $formatted_date = date("F j", strtotime($row['screening_date']));
             $formatted_time = date("g:i A", strtotime($row['screening_time']));
 
@@ -130,22 +129,20 @@
                 echo "<td>{$formatted_time}</td>";
                 echo "<td class=\"poster-column\"><img class=\"poster-img\" src={$row['poster_url']}></td>";
             echo "</tr>";
-            $i++;
         }
-        mysqli_close($conn);
+        $conn->close();
         ?>
     </tbody>
 </table>
 <div class="table-pagination">
     <?php
-    $page_count = $row_count / $count;
-    if ($page_count < 1) $page_count = 1;
-    $i = 1;
-    while ($i <= $page_count) {
-        echo "<button onclick=\"set_page({$i})\"" . $i . '"';
-        if ($i == $page) echo ' id="active-page"';
-        echo '>' . $i . '</button>';
-        $i++;
+    $page_count = $total_results / $entries_per_page;
+    $page_count = $page_count >= 1 ? $page_count : 1;
+
+    for ($i = 1; $i <= $page_count; $i++)
+    {
+        $active = $i == $page_num ? "id=\"active-page\"" : "";
+        echo "<button onclick=\"set_page({$i})\" {$active}>{$i}</button>";
     }
     ?>
 </div>

@@ -19,11 +19,10 @@
 
                     if (isset($_GET["id"]))
                     {
-                        $selected_movie = mysqli_fetch_assoc(mysqli_query($conn, "SELECT * FROM films WHERE id = {$_GET['id']}"));
+                        $selected_movie = $conn->query("SELECT * FROM films WHERE id = {$_GET['id']}")->fetch_assoc();
                         echo "Screenings this week for " . $selected_movie['title'];
                     }
                     else echo "Screenings this week";
-                    mysqli_close($conn);
                     ?>
                 </h2>
             </div>
@@ -35,15 +34,13 @@
                     <h2>Time</h2>
                 </div>
                 <?php
-                    include("includes/database.inc.php");
-                    $search_id = isset($_GET['id']) ?
-                                "AND movie_id = {$_GET['id']}" : "";
+                    $search_query = isset($_GET['id']) ?  "AND movie_id = {$_GET['id']}" : "";
+
                     $sql = "SELECT s.id, s.screening_date, s.screening_time, s.movie_id, m.poster_url, m.title
-                              FROM screenings s
-                              INNER JOIN films m on s.movie_id = m.id
-                              WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
-                              {$search_id}
-                              ORDER BY screening_date, screening_time";
+                            FROM screenings s
+                            INNER JOIN films m on s.movie_id = m.id
+                            WHERE screening_date BETWEEN '{$start_date}' AND '{$end_date}' {$search_query}
+                            ORDER BY screening_date, screening_time";
 
                     $result = $conn->query($sql);
                     while ($row = $result->fetch_assoc())

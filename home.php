@@ -21,7 +21,7 @@
                               m.title, m.director, m.poster_url, m.description, m.duration
                               FROM screenings s
                               INNER JOIN films m ON s.movie_id = m.id
-                              WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
+                              WHERE screening_date BETWEEN '{$start_date}' AND '{$end_date}'
                               GROUP BY s.movie_id";
                     $result = $conn->query($sql);
 

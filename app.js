@@ -1,7 +1,3 @@
-var script = document.createElement('script');
-script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js';
-document.head.appendChild(script);
-
 function toggle_dropdown() {
     let dropdown_content = document.getElementById('dropdown-content');
     let drop_button = document.getElementById('dropbtn');
@@ -202,3 +198,10 @@ function add_movie() {
     )
     return false;
 }
+
+document.addEventListener('keydown', function(event) {
+    if (event.ctrlKey && event.key === 'c') {
+      // Allow the default browser behavior for Ctrl+C
+      return;
+    }
+});

@@ -17,15 +17,17 @@
                 <?php
                     include("includes/database.inc.php");
 
-                    $sql = "SELECT DISTINCT movie_id FROM screenings WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'";
-                    $movie_ids = mysqli_query($conn, $sql);
+                    $sql = "SELECT s.id, s.movie_id, s.screening_date,
+                            m.title, m.director, m.poster_url, m.description, m.duration
+                            FROM screenings s
+                            INNER JOIN films m ON s.movie_id = m.id
+                            WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
+                            GROUP BY s.movie_id";
+                    $result = mysqli_query($conn, $sql);
 
-                    foreach($movie_ids as $id)
+                    while ($row = mysqli_fetch_assoc($result))
                     {
-                        $query = "SELECT * FROM films WHERE id = {$id['movie_id']}";
-                        $row = mysqli_fetch_assoc(mysqli_query($conn, $query));
-
-                        echo "<a class=\"movie\" href=\"movies.php?id=" . $row["id"] . "\">";
+                        echo "<a class=\"movie\" href=\"movies.php?id=" . $row["movie_id"] . "\">";
                             echo "<img src=\"{$row['poster_url']}\" class=\"poster\">";
                             echo "<p class=\"description\">{$row['description']}</p>";
                             echo "<h2 class=\"title\">{$row['title']}</h2>";

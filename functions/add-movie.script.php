@@ -17,7 +17,6 @@ if ($_ = mysqli_fetch_assoc($result))
     exit();
 }
 
-$api_key = "64971d742285741b35e7a6716621400c";
 $movie_url = "https://api.themoviedb.org/3/movie/{$tmdb_id}?api_key={$api_key}";
 $credits_url = "https://api.themoviedb.org/3/movie/{$tmdb_id}/credits?api_key={$api_key}";
 

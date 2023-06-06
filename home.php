@@ -26,11 +26,11 @@
                         $row = mysqli_fetch_assoc(mysqli_query($conn, $query));
 
                         echo "<a class=\"movie\" href=\"movies.php?id=" . $row["id"] . "\">";
-                            echo "<img src=\"" . $row['poster_url'] . "\" class=\"poster\">";
-                            echo "<p class=\"description\">" . $row['description'] . "</p>";
-                            echo "<h2 class=\"title\">" . $row['title'] . "</h2>";
-                            echo "<h2 class=\"director\">directed by<br>" . $row['director'] . "</h2>";
-                            echo "<h2 class=\"runtime\">Runtime<br>" . $row['duration'] . " minutes </h2>";
+                            echo "<img src=\"{$row['poster_url']}\" class=\"poster\">";
+                            echo "<p class=\"description\">{$row['description']}</p>";
+                            echo "<h2 class=\"title\">{$row['title']}</h2>";
+                            echo "<h2 class=\"director\">directed by<br>{$row['director']}</h2>";
+                            echo "<h2 class=\"runtime\">Runtime<br>{$row['duration']} minutes</h2>";
                         echo "</a>";
                     }
                     mysqli_close($conn);

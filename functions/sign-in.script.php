@@ -11,17 +11,10 @@ if (isset($_POST['submit']))
     
     include('../includes/database.inc.php');
 
-    $sql = 'SELECT * FROM users WHERE username = ?';
+    $sql = "SELECT * FROM users WHERE username = '{$username}'";
+    $result = $conn->query($sql);
 
-    $stmt = mysqli_prepare($conn, $sql);
-
-    mysqli_stmt_bind_param($stmt, "s", $username);
-
-    mysqli_stmt_execute($stmt);
-
-    $result = mysqli_stmt_get_result($stmt);
-
-    if ($row = mysqli_fetch_assoc($result))
+    if ($row = $result->fetch_assoc())
     {
         if (strcmp($password, $row['password']) != 0)
         {

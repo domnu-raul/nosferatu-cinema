@@ -145,7 +145,7 @@ function delete_movie(button) {
         data: { id: entry_id },
         success: function(response) {
             console.log(response);
-            if (response !== 'error') {
+            if (response === 'success') {
               row.empty();
               row.append(`<td colspan=${column_count} class="removed-row">${title} removed.</td>`);
             }

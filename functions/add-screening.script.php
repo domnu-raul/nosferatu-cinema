@@ -12,10 +12,11 @@ $query = "SELECT * FROM films WHERE id = {$movie_id}";
 $result = mysqli_query($conn, $query);
 if ($movie_row = mysqli_fetch_assoc($result))
 {
-    $query = "SELECT * FROM screenings ORDER BY id DESC";
+    $query = "SELECT MAX(id) AS max_id FROM screenings";
     $result = mysqli_query($conn, $query);
 
-    $screening_id = mysqli_fetch_assoc($result)['id'] + 1;
+    $screening_id = mysqli_fetch_assoc($result)['max_id'] + 1;
+
     $screening_time = $_POST['time'];
     $screening_date = $_POST['date'];
 

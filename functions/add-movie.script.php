@@ -11,7 +11,7 @@ if (!is_numeric($tmdb_id))
 $query = "SELECT * FROM films WHERE id = {$tmdb_id}";
 $result = mysqli_query($conn, $query);
 
-if ($_ = mysqli_fetch_assoc($result))
+if (mysqli_num_rows($result) > 0)
 {
     echo "error;Movie already in database.";
     exit();

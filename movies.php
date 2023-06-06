@@ -36,17 +36,17 @@
                 </div>
                 <?php
                     include("includes/database.inc.php");
-                    $join_str = isset($_GET['id']) ?
+                    $search_id = isset($_GET['id']) ?
                                 "AND movie_id = {$_GET['id']}" : "";
-                    $query = "SELECT s.id, s.screening_date, s.screening_time, s.movie_id, m.poster_url, m.title
+                    $sql = "SELECT s.id, s.screening_date, s.screening_time, s.movie_id, m.poster_url, m.title
                               FROM screenings s
                               INNER JOIN films m on s.movie_id = m.id
                               WHERE screening_date BETWEEN '{$startDate}' AND '{$endDate}'
-                              {$join_str}
+                              {$search_id}
                               ORDER BY screening_date, screening_time";
 
-                    $result = mysqli_query($conn, $query);
-                    while ($row = mysqli_fetch_assoc($result))
+                    $result = $conn->query($sql);
+                    while ($row = $result->fetch_assoc())
                     {
                         $formatted_date = date("F j", strtotime($row['screening_date']));
                         $formatted_time = date("g:i A", strtotime($row['screening_time']));

@@ -88,20 +88,20 @@ header {
         grid-column: 3;
     }
 }
+
 @media only screen and (max-width: 768px) {
     header {
         height: 125px;
         grid-template-rows: 1fr 1fr;
         gap: 0;
     }
-    #head-text {
-        margin-top: 20px;
-    }
+
     .logo {
         grid-row: 1;
         justify-self: center;
         height: 50px;
     }
+
     .header-right {
         grid-row: 2;
         justify-self: center;
@@ -110,6 +110,6 @@ header {
     }
 
     .header-right a {
-        font-size: smaller;
+        font-size: 0.8em;
     }
 }

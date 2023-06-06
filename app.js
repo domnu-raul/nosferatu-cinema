@@ -198,10 +198,3 @@ function add_movie() {
     )
     return false;
 }
-
-document.addEventListener('keydown', function(event) {
-    if (event.ctrlKey && event.key === 'c') {
-      // Allow the default browser behavior for Ctrl+C
-      return;
-    }
-});

@@ -136,7 +136,6 @@
 </table>
 <div class="table-pagination">
     <?php
-    include('includes/database.inc.php');
     $page_count = $row_count / $count;
     if ($page_count < 1) $page_count = 1;
     $i = 1;

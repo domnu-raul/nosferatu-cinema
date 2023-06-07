@@ -1,0 +1,7 @@
+{
+    "db_server": "localhost",
+    "db_user": "root",
+    "db_pass": "",
+    "db_name": "cinemadb",
+    "api_key": "64971d742285741b35e7a6716621400c"
+}

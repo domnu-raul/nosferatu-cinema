@@ -9,7 +9,7 @@
     pdftitle={Nosferatu Cinema - Web Design Project Documentation},
 }
 
-\title{Nosferatu Cinema\\Web Site Documentation}
+\title{Nosferatu Cinema\\Website Documentation}
 \author{Raul Istrat\\
 Computer Science Departament at\\
 West University of Timisoara\\
@@ -20,7 +20,7 @@ West University of Timisoara\\
 \raggedright
 \maketitle
 
-\section{Introduction}
+\section*{Introduction}
     Nosferatu Cinema is a fictional cinema for which I built a website for. The homepage displays movies that will be screened in the coming week. Visitors can check all screening schedules on the \texttt{movies} page, and they can also filter by selecting a specific movie. Although creating an account and logging in doesn't provide additional features on the site, an \texttt{admin} user gains access to the \texttt{dashboard} page, where they can add or remove movies and screenings from the database. The project makes use of data from the TMDB API, which provides movie data such as titles, runtimes, and other information.
 
 \section{Project Requirments}
@@ -81,7 +81,29 @@ West University of Timisoara\\
 
 \section{Functionalities of the website}
 
-    In the \texttt
+From the visitor's perspective, the site has the basic functionality of viewing data of interest, such as what movies are currently displayed in the cinema, and the date and time at which they can see them. It's worth noting that the average user can only see the screening schedules only for the following 7 days(inclusive.).
+
+\begin{enumerate}[label=$-$]
+    \item\texttt{home} page: displays all movies that are scheduled to screen in the following week. Data displayed: titles, posters, description, on hover --- runtimes and director. Clicking on any movie will send the user to the \texttt{movies} page, with the movie's id in the GET array, such that the page only displays the screening schedule of that movie.
+
+    \item\texttt{movies} page: displays the screening schedule for the following week. Additionally, clicking on any movie will filter to only show the screening schedule of the selected movie.
+
+    \item\texttt{sign-in} and \texttt{sign-up}: the user may create an account with an username and a password. Creating an account via the sign-up form will automatically connect the user(setting the \$\_SESSION['user']). The sign-in functionality is pretty intuitive. When connected, the sign-in button is replaced with a sign-out(unsetting \$\_SESSION['user']) button. If username is 'admin', a dashboard button appears in the header.
+\end{enumerate}
+
+The website also has admin exclusive functionalities. The \texttt{dashboard} page can only be accessed if the user is admin. Anyone else that tries to access the \texttt{dashboard} will be redirected to \texttt{home}.
+
+\begin{enumerate}[label=$-$]
+    \item The \texttt{dashboard} page dynamically displays one of two tables based on the \$\_GET['table'] value, which can be either "movies" or "screenings".
+    \item For each of the subpages, the admin can search by movie title, delete entries, or add, using a movie's TMDB id.
+    
+    The admin may also sort by:\\$\rightarrow$ For screenings: title, runtime, date and time(earliest screenings or latest screenings).\\$\rightarrow$ For movies: title, runtime, id.
+    \item The tables are displayed in multiple pages that can hold at most 20 rows.
+\end{enumerate}
+
+\section{Technologies Used}
+
+
 
     
 

@@ -24,7 +24,7 @@ if (strcmp($password, $password_repeat) != 0) {
 }
 
 $stmt = $conn->prepare("INSERT INTO users (username, password) VALUES (?, ?)");
-$stmt->bind_param("ss", $username, $password);
+$stmt->bind_param("ss", $username, password_hash($password, PASSWORD_BCRYPT));
 
 $stmt->execute();
 

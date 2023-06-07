@@ -6,7 +6,7 @@
 
     <ul class="header-right">
         <li name="home-button"><a href="home.php">Home</a></li>
-        <li name="about-button"><a href="#about">About</a></li>
+        <li name="about-button"><a href="about.php">About</a></li>
         <li name="movies-button"><a href="movies.php">Movies</a></li>
         <?php
         if (isset($_SESSION['user'])) {

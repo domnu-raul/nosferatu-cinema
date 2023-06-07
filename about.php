@@ -1,15 +1,20 @@
+<?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <?php include('includes/head-imports.inc.php') ?>
+    <link rel="stylesheet" href="styles/about.css">
+    <title>About - Nosferatu Cinema</title>
 </head>
 
 <body>
+    <?php include('includes/header.inc.php') ?>
+    <script>
+        set_active('about-button');
+    </script>
     <div class="wrapper">
+        <span></span>
 
         <section>
             <h2>Immersive Movie Experience</h2>
@@ -53,8 +58,9 @@
                 to share our love for cinema with you and provide a platform that celebrates the magic of storytelling
                 through the silver screen.</p>
         </section>
+        <footer>
+            
+        </footer>
     </div>
-
 </body>
-
 </html>

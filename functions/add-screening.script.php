@@ -1,9 +1,8 @@
 <?php
-include ("../includes/database.inc.php");
+include("../includes/database.inc.php");
 
 $movie_id = $_POST['id'];
-if (!is_numeric($movie_id))
-{
+if (!is_numeric($movie_id)) {
     echo "error";
     exit();
 }
@@ -11,8 +10,7 @@ if (!is_numeric($movie_id))
 $sql = "SELECT * FROM films WHERE id = {$movie_id}";
 $result = $conn->query($sql);
 
-if ($movie_row = $result->fetch_assoc())
-{
+if ($movie_row = $result->fetch_assoc()) {
     $sql = "SELECT MAX(id) AS max_id FROM screenings";
     $result = $conn->query($sql);
 
@@ -35,7 +33,4 @@ if ($movie_row = $result->fetch_assoc())
     $formatted_date = date("F j", strtotime($screening_date));
     $formatted_time = date("g:i A", strtotime($screening_time));
     echo "{$screening_id};{$movie_id};{$movie_title};{$formatted_date};{$formatted_time};{$poster_url}";
-}
-
-else echo "error";
-?>
+} else echo "error";

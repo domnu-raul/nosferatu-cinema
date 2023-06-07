@@ -64,4 +64,3 @@ $stmt->close();
 $conn->close();
 
 echo "{$tmdb_id};{$title};{$director};{$duration};{$poster_url}";
-?>

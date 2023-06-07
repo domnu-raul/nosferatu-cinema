@@ -29,7 +29,6 @@
     #add-form input {
         width: max(100%, 70px);
     }
-
 </style>
 <table>
     <thead>
@@ -91,8 +90,7 @@
 
         $search_query = "";
         $sort_term = "";
-        if (isset($_GET['search']))
-        {
+        if (isset($_GET['search'])) {
             $search_string = urldecode($_GET['search']);
             $search_query = "WHERE m.title LIKE LOWER('%{$search_string}%')";
         }
@@ -113,21 +111,20 @@
                 INNER JOIN films m ON s.movie_id = m.id {$search_query}";
         $total_results = $conn->query($sql)->fetch_assoc()['total'];
 
-        for ($i = 0; $row = $result->fetch_assoc(); $i++)
-        {
+        for ($i = 0; $row = $result->fetch_assoc(); $i++) {
             $formatted_date = date("F j", strtotime($row['screening_date']));
             $formatted_time = date("g:i A", strtotime($row['screening_time']));
 
             $odd_even = $i % 2 == 0 ? 'even-row' : 'odd-row';
             echo "<tr data-id=\"{$row['id']}\" class=\"{$odd_even}\">";
-                echo "<td class=\"delete-column\"><button onclick=\"delete_screening(this)\">
-                      <img src=\"assets/delete-icon.png\" class=\"delete-icon\"></button></td>";
-                echo "<td>{$row['id']}</td>";
-                echo "<td>{$row['movie_id']}</td>";
-                echo "<td>{$row['title']}</td>";
-                echo "<td>{$formatted_date}</td>";
-                echo "<td>{$formatted_time}</td>";
-                echo "<td class=\"poster-column\"><img class=\"poster-img\" src={$row['poster_url']}></td>";
+            echo "<td class=\"delete-column\"><button onclick=\"delete_screening(this)\">
+                  <img src=\"assets/delete-icon.png\" class=\"delete-icon\"></button></td>";
+            echo "<td>{$row['id']}</td>";
+            echo "<td>{$row['movie_id']}</td>";
+            echo "<td>{$row['title']}</td>";
+            echo "<td>{$formatted_date}</td>";
+            echo "<td>{$formatted_time}</td>";
+            echo "<td class=\"poster-column\"><img class=\"poster-img\" src={$row['poster_url']}></td>";
             echo "</tr>";
         }
         $conn->close();
@@ -139,8 +136,7 @@
     $page_count = $total_results / $entries_per_page;
     $page_count = $page_count >= 1 ? $page_count : 1;
 
-    for ($i = 1; $i <= $page_count; $i++)
-    {
+    for ($i = 1; $i <= $page_count; $i++) {
         $active = $i == $page_num ? "id=\"active-page\"" : "";
         echo "<button onclick=\"set_page({$i})\" {$active}>{$i}</button>";
     }

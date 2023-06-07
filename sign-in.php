@@ -1,8 +1,9 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <?php include("includes/head-imports.inc.php")?>
+    <?php include("includes/head-imports.inc.php") ?>
     <title>Sign In - Nosferatu Cinema</title>
     <link rel="stylesheet" href="styles/form.css">
     <style>
@@ -20,10 +21,13 @@
         }
     </style>
 </head>
+
 <body>
     <main>
         <?php include('includes/header.inc.php'); ?>
-        <script> set_active('sign-in-button'); </script>
+        <script>
+            set_active('sign-in-button');
+        </script>
         <div class="wrapper">
             <section class="form">
                 <h2>Sign In</h2>
@@ -34,18 +38,12 @@
                     <button name="redirect-sign-up">Sign Up</button>
                 </form>
                 <?php
-                if(isset($_GET['error']))
-                {
-                    if (strcmp($_GET['error'], 'empty-fields') == 0)
-                    {
+                if (isset($_GET['error'])) {
+                    if (strcmp($_GET['error'], 'empty-fields') == 0) {
                         echo "<p>Please fill in all fields.</p>";
-                    }
-                    else if (strcmp($_GET['error'], 'incorrect-password') == 0)
-                    {
+                    } else if (strcmp($_GET['error'], 'incorrect-password') == 0) {
                         echo "<p>Incorrect password.</p>";
-                    }
-                    else if (strcmp($_GET['error'], 'incorrect-username') == 0)
-                    {
+                    } else if (strcmp($_GET['error'], 'incorrect-username') == 0) {
                         echo '<p>Username not found.</p>';
                     }
                 }
@@ -54,4 +52,5 @@
         </div>
     </main>
 </body>
+
 </html>

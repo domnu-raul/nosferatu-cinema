@@ -1,14 +1,16 @@
 <?php session_start(); ?>
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <?php include("includes/head-imports.inc.php")?>
+    <?php include("includes/head-imports.inc.php") ?>
     <title>Sign Up - Nosferatu Cinema</title>
     <link rel="stylesheet" href="styles/form.css">
     <style>
         .wrapper {
             grid-template-rows: 100px .5fr 1fr 1fr;
         }
+
         .form button {
             grid-column: 1 / span 2;
         }
@@ -23,10 +25,13 @@
         }
     </style>
 </head>
+
 <body>
     <main>
         <?php include('includes/header.inc.php'); ?>
-        <script> set_active('sign-in-button'); </script>
+        <script>
+            set_active('sign-in-button');
+        </script>
         <div class="wrapper">
             <section class="form">
                 <h2>Sign Up</h2>
@@ -37,18 +42,12 @@
                     <button type="submit" name="submit">Submit</button>
                 </form>
                 <?php
-                if(isset($_GET['error']))
-                {
-                    if (strcmp($_GET['error'], 'empty-fields') == 0)
-                    {
+                if (isset($_GET['error'])) {
+                    if (strcmp($_GET['error'], 'empty-fields') == 0) {
                         echo "<p>Please fill in all fields.</p>";
-                    }
-                    else if (strcmp($_GET['error'], 'password-not-matching') == 0)
-                    {
+                    } else if (strcmp($_GET['error'], 'password-not-matching') == 0) {
                         echo "<p>Passwords don't match.</p>";
-                    }
-                    else if (strcmp($_GET['error'], 'user-already-exists') == 0)
-                    {
+                    } else if (strcmp($_GET['error'], 'user-already-exists') == 0) {
                         echo "<p>Username already taken.</p>";
                     }
                 }
@@ -57,4 +56,5 @@
         </div>
     </main>
 </body>
+
 </html>

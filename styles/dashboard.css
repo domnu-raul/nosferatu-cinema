@@ -29,11 +29,12 @@ table {
 
 .poster-img {
     max-width: 50px;
-    height: auto
+    height: auto;
+    border-radius: 3px;
 }
 
 .poster-column {
-    display: flex;
+    display: inline-flex;
     width: 40px;
     align-items: center;
     justify-content: center;
@@ -240,4 +241,17 @@ td {
     td {
         padding-right: 10px;
     }
+}
+
+#header-row {
+    background-color: #26233a;
+    color: var(--text-color);
+}
+
+#header-row td {
+    display: flexbox;
+    text-transform: uppercase;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    justify-content: center;
 }

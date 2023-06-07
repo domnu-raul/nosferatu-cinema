@@ -70,7 +70,7 @@
                 </div>
             </th>
         </tr>
-        <tr class="odd-row">
+        <tr id="header-row">
             <td class="delete-column"></td>
             <td>ID</td>
             <td>Movie ID</td>
@@ -124,7 +124,10 @@
             echo "<td>{$row['title']}</td>";
             echo "<td>{$formatted_date}</td>";
             echo "<td>{$formatted_time}</td>";
-            echo "<td class=\"poster-column\"><img class=\"poster-img\" src={$row['poster_url']}></td>";
+            echo "<td class=\"poster-column\"
+                  onclick=\"redirect_URL('https://www.themoviedb.org/movie/{$row['movie_id']}')\"
+                  style=\"cursor: pointer;\">
+                  <img class=\"poster-img\" src=\"{$row['poster_url']}\"></td>";
             echo "</tr>";
         }
         $conn->close();

@@ -1,3 +1,5 @@
+let redirect_URL = function(URL) {window.open(URL, '_blank')};
+
 function toggle_dropdown() {
     let dropdown_content = document.getElementById('dropdown-content');
     let drop_button = document.getElementById('dropbtn');
@@ -65,7 +67,7 @@ function delete_screening(button) {
             console.log(response);
             if (response === 'success') {
               row.empty();
-              row.append(`<td colspan=${column_count} class="removed-row">Screening ${entry_id} deleted: ${title} on ${date} at ${time}</td>`);
+              row.append(`<td colspan=${column_count} class="removed-row">Removed screening - ID: ${entry_id} - ${title} on ${date} at ${time} </td>`);
             }
         }
     });
@@ -143,7 +145,7 @@ function delete_movie(button) {
             console.log(response);
             if (response === 'success') {
               row.empty();
-              row.append(`<td colspan=${column_count} class="removed-row">${title} removed.</td>`);
+              row.append(`<td colspan=${column_count} class="removed-row">ID: ${entry_id} - ${title} removed.</td>`);
             }
         }
     });

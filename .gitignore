@@ -1,1 +1,24 @@
 /includes/database.inc.php
+# LaTeX build files
+*.aux
+*.log
+*.toc
+*.out
+*.synctex.gz
+*.bbl
+*.blg
+*.lot
+*.lof
+*.gz
+*.ist
+*.acn
+*.acr
+*.alg
+*.glg
+*.glo
+*.gls
+*.glsdefs
+*.fls
+*.fdb_latexmk
+*.dvi
+*.xdv

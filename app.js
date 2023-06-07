@@ -9,7 +9,7 @@ function toggle_dropdown() {
     {
         dropdown_content.style.display = 'none';
 
-        drop_button.style.backgroundColor = 'var(--second-bg-color)';
+        drop_button.style.backgroundColor = 'var(--button-color)';
         drop_button.style.color = 'var(--text-color)';
         arrow.innerHTML = '⏴';
     }
@@ -18,7 +18,7 @@ function toggle_dropdown() {
         dropdown_content.style.display = 'grid';
         dropdown_content.style.gridTemplateColumns = '1fr';
         drop_button.style.backgroundColor = 'var(--text-color)';
-        drop_button.style.color = 'var(--second-bg-color)';
+        drop_button.style.color = 'var(--button-color)';
         arrow.innerHTML = '⏷';
     }
 }

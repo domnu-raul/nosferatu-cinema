@@ -2,7 +2,8 @@
 \usepackage[a4paper, margin=.85in]{geometry}
 \usepackage[none]{hyphenat}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+\usepackage{hyperref, enumitem}
+\usepackage{xcolor}
 
 \hypersetup{
     pdftitle={Nosferatu Cinema - Web Design Project Documentation},
@@ -16,15 +17,73 @@ West University of Timisoara\\
 \date{}
 
 \begin{document}
+\raggedright
 \maketitle
 
-\begin{abstract}
-    Nosferatu Cinema is not a cinema, but I build the web site for it as a project for Web Design. On the "home" page, the viewer can see all movies that are screening in the following 7 days. On the "movies" page, viewers can see all screening dates and times, users may also select a movie to only display the screenings of that movie. The user may create an account and log in, although this doesn't offer any extra functionality for the website, but the "admin" user will get access to the "dashboard" page, where they can add or delete movies or screenings from the database.
-\end{abstract}
-
 \section{Introduction}
+    Nosferatu Cinema is a fictional cinema for which I built a website for. The homepage displays movies that will be screened in the coming week. Visitors can check all screening schedules on the \texttt{movies} page, and they can also filter by selecting a specific movie. Although creating an account and logging in doesn't provide additional features on the site, an \texttt{admin} user gains access to the \texttt{dashboard} page, where they can add or remove movies and screenings from the database. The project makes use of data from the TMDB API, which provides movie data such as titles, runtimes, and other information.
 
+\section{Project Requirments}
+    Following are the requirments that the website needs to meet. Along with my justification for how I met said requirments in \textcolor{red}{red}.
+    \begin{enumerate}
+        \item HTML
+            \begin{enumerate}[label={$-$}]
+            \item The website must contain a minimum of 4 and a maximum of 8 web pages. 
+            
+            \textcolor{red}{The website contains the following pages: \texttt{home}, \texttt{movies}, \texttt{about}, \texttt{sign-in}, \texttt{sign-in}, \texttt{dashboard}. Making 6 pages in total. Although I'm not sure if the \texttt{dashboard} page is considered a single page, since it has 2 separate subpages for screenings and movies.}
+            \end{enumerate}
+        \item CSS
+            \begin{enumerate}[label={$-$}]
+            \item Styling must be done in separate files. 
+            
+            \textcolor{red}{The following \textbf{.css} files are defined:\\$\rightarrow$ style.css --- for all pages, defines the base styling and the styling for the header.\\$\rightarrow$ about.css, dashboard.css, home.css, movies.css --- each defines the custom styling for the page with the same name.\\$\rightarrow$ form.css --- shared between the \texttt{sign-in} and the \texttt{sign-up}  pages.}
+            \item The site must be responsive.
 
+            \textcolor{red}{Each page's style was carefuly crafted to fit to all aspect ratios using css media queries, some example of responsiveness:\\$\rightarrow$ As the width of the browser gets narrower, the header separates into 2 rows.\\$\rightarrow$ In the \texttt{dashboard} page, posters will only be displayed if there is enough room in the window for them.}
+            \item The layout must be created using tables and frames.
+            
+            \textcolor{red}{Not so sure about this one. The layout of each page was created using grids, occasionally some flex/inline/flexbox elements can be found. I don't believe I understood this requirment, since the suggested layouts are pretty outdated.}
+            \item It must contain a drop-down menu made with CSS.
+            
+            \textcolor{red}{In the \texttt{dashboard} page, the admin can select using a dropdown menu the order the data is displayed in.}
+            \item CSS transformations must be used.
+
+            \textcolor{red}{I believe "invert()" and "hue-rotate()" are considered CSS transformations, which are used for the delete buttons on the \texttt{dashboard} page.}
+            \end{enumerate}
+        \item JavaScript/jQuery Elements
+            \begin{enumerate}[label={$-$}]
+            \item Modifying the style of an element or a group of elements.
+
+            \textcolor{red}{An onclick event for the dropdown menu was used to call the "toggle\_dropdown()" function with JavaScript. Modifying the style of the dropdown content to either show on the page or not.}
+            \item Using functions in forms.
+
+            \textcolor{red}{The forms for adding new entries in the \texttt{dashboard} page are calling JavaScript functions that asynchronously send requests to the server such that elements can be added without reloading the page.}
+            \item Using mouse and keyboard events.
+
+            \textcolor{red}{There are multiple onclick events, such as the one mentioned above.}
+            \item Dynamic modification of the position of an element.
+
+            \textcolor{red}{JavaScript functions have been implemented to add or delete rows from tables.}
+            \end{enumerate}
+        \item PHP+MySQL
+            \begin{enumerate}[label={$-$}]
+            \item It must contain at least one registration and login form in PHP.
+
+            \textcolor{red}{There are dedicated \texttt{sign-in} and \texttt{sign-up}  pages. Which send requests via PHP.}
+            \item At least one MySQL table must be used to store and update information.
+
+            \textcolor{red}{There are three MySQL tables defined:\\$\rightarrow$ screenings --- ID(INT), movie\_id(INT), screening\_date(DATE), screening\_time(TIME)\\$\rightarrow$ films --- ID(INT), title(VARCHAR 255), description(TEXT), duration(INT), director(VARCHAR 255), poster\_url(VARCHAR 255)\\$\rightarrow$ users --- username(VARCHAR 255), password(VARCHAR 255)}
+            \item A page with dynamic content must be generated using PHP and information taken from a MySQL table, defining the table with data (more than 50 entries) taken from CSV files and imported into MySQL using the PHPMyAdmin interface in XAMPP/ or JSON or other databases alternatives.
+
+            \textcolor{red}{The \texttt{home}, \texttt{movies}, and \texttt{dashboard} pages all use PHP to display information from the \texttt{screenings} and \texttt{films} tables. The data in the \texttt{films} table was defined using a Python script implemented by me and the TMDB API. Another Python script was used for randomly generating a lot of screening data to insert in the database. Although the data was imported directly using queries, a script to generate a CSV would have been as easy to implement, but the process was more automatic this way.}
+            \end{enumerate}
+    \end{enumerate}
+
+\section{Functionalities of the website}
+
+    In the \texttt
+
+    
 
 
 \end{document}

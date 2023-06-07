@@ -2,7 +2,7 @@ import requests
 import mysql.connector
 import json
 
-with open("../data.json") as json_file:
+with open("../data/include.json") as json_file:
     json_data = json_file.read()
 
 data = json.loads(json_data)

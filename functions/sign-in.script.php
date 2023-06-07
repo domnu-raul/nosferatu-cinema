@@ -14,7 +14,7 @@ if (empty($username) || empty($password)) {
     exit();
 }
 
-require('../includes/database.inc.php');
+include('../includes/database.inc.php');
 
 $sql = "SELECT * FROM users WHERE username = '{$username}'";
 $result = $conn->query($sql);

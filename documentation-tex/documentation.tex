@@ -36,7 +36,7 @@ West University of Timisoara\\
             \begin{enumerate}[label={$-$}]
             \item Styling must be done in separate files. 
             
-            \textcolor{red}{The following \textbf{.css} files are defined:\\$\rightarrow$ style.css --- for all pages, defines the base styling and the styling for the header.\\$\rightarrow$ about.css, dashboard.css, home.css, movies.css --- each defines the custom styling for the page with the same name.\\$\rightarrow$ form.css --- shared between the \texttt{sign-in} and the \texttt{sign-up}  pages.}
+            \textcolor{red}{The following \textbf{\texttt{.css}} files are defined:\\$\rightarrow$ \texttt{style.css} --- for all pages, defines the base styling and the styling for the header.\\$\rightarrow$ \texttt{about.css}, \texttt{dashboard.css}, \texttt{home.css}, \texttt{movies.css} --- each defines the custom styling for the page with the same name.\\$\rightarrow$ \texttt{form.css} --- shared between the \texttt{sign-in} and the \texttt{sign-up} pages.}
             \item The site must be responsive.
 
             \textcolor{red}{Each page's style was carefuly crafted to fit to all aspect ratios using css media queries, some example of responsiveness:\\$\rightarrow$ As the width of the browser gets narrower, the header separates into 2 rows.\\$\rightarrow$ In the \texttt{dashboard} page, posters will only be displayed if there is enough room in the window for them.}
@@ -72,7 +72,7 @@ West University of Timisoara\\
             \textcolor{red}{There are dedicated \texttt{sign-in} and \texttt{sign-up}  pages. Which send requests via PHP.}
             \item At least one MySQL table must be used to store and update information.
 
-            \textcolor{red}{There are three MySQL tables defined:\\$\rightarrow$ screenings --- ID(INT), movie\_id(INT), screening\_date(DATE), screening\_time(TIME)\\$\rightarrow$ films --- ID(INT), title(VARCHAR 255), description(TEXT), duration(INT), director(VARCHAR 255), poster\_url(VARCHAR 255)\\$\rightarrow$ users --- username(VARCHAR 255), password(VARCHAR 255)}
+            \textcolor{red}{There are three MySQL tables defined:\\$\rightarrow$ \texttt{screenings} --- ID(INT), movie\_id(INT), screening\_date(DATE), screening\_time(TIME)\\$\rightarrow$ \texttt{films} --- ID(INT), title(VARCHAR 255), description(TEXT), duration(INT), director(VARCHAR 255), poster\_url(VARCHAR 255)\\$\rightarrow$ \texttt{users} --- username(VARCHAR 255), password(VARCHAR 255)}
             \item A page with dynamic content must be generated using PHP and information taken from a MySQL table, defining the table with data (more than 50 entries) taken from CSV files and imported into MySQL using the PHPMyAdmin interface in XAMPP/ or JSON or other databases alternatives.
 
             \textcolor{red}{The \texttt{home}, \texttt{movies}, and \texttt{dashboard} pages all use PHP to display information from the \texttt{screenings} and \texttt{films} tables. The data in the \texttt{films} table was defined using a Python script implemented by me and the TMDB API. Another Python script was used for randomly generating a lot of screening data to insert in the database. Although the data was imported directly using queries, a script to generate a CSV would have been as easy to implement, but the process was more automatic this way.}
@@ -94,18 +94,46 @@ From the visitor's perspective, the site has the basic functionality of viewing 
 The website also has admin exclusive functionalities. The \texttt{dashboard} page can only be accessed if the user is admin. Anyone else that tries to access the \texttt{dashboard} will be redirected to \texttt{home}.
 
 \begin{enumerate}[label=$-$]
-    \item The \texttt{dashboard} page dynamically displays one of two tables based on the \$\_GET['table'] value, which can be either "movies" or "screenings".
+    \item The \texttt{dashboard} page dynamically displays one of two tables based on the \$\_GET['table'] value, which can be either "movies" or "screenings". Each table is displayed in multiple pages that can hold at most 20 rows.
     \item For each of the subpages, the admin can search by movie title, delete entries, or add, using a movie's TMDB id.
     
-    The admin may also sort by:\\$\rightarrow$ For screenings: title, runtime, date and time(earliest screenings or latest screenings).\\$\rightarrow$ For movies: title, runtime, id.
-    \item The tables are displayed in multiple pages that can hold at most 20 rows.
+    \item The admin may also sort by:\\$\rightarrow$ For screenings: title, runtime, date and time(earliest or latest).\\$\rightarrow$ For movies: title, runtime, id.
 \end{enumerate}
 
 \section{Technologies Used}
 
+In developing this website, I had to combine various technologies to get the desired funcionalities.
 
+\begin{enumerate}[label=$-$]
+    \item XAMPP --- For hosting the MySQL and for the phpMyAdmin interface to visualize the database.
+    \item PHP --- Back-end programming language for handling server-side logic and interactions with the database.
+    \item TMDB API --- Used to fetch movie information in order to fill the website with content.
+    \item Python --- Employed as a scripting language to automatically retrieve and generate data. For this, I have used the \texttt{requests} library to make HTTP requests to the TMDB API, and \texttt{mysql.connector} to connect and interact with the MySQL database.
+    \item JavaScript and jQuery --- Used to add interactivity and real-time modifications to the website. Additionally, the \texttt{flatpickr} library was used for providing an easy to use interface when scheduling screenings.
+    \item AJAX requests --- jQuery's AJAX functionality was used to send asynchronous requests to the server and manipulate data server-side without reloading the page.
+    \item HTML and CSS --- The website's structure was creating using HTML(handled with PHP), and the styling was done using CSS.
+\end{enumerate}
 
-    
+\section*{User Instructions}
 
+For using this web app, one can follow the steps below:
+\begin{enumerate}
+    \item Import the database.
+    \begin{enumerate}[label=$\rightarrow$]
+        \item Locate the \texttt{data/cinemadb.sql} file.
+        \item Import this file into your MySQL or MariaDB database, using tools like phpMyAdmin or bash.
+    \end{enumerate}
+    \item Obtain a TMDB API key.
+    \begin{enumerate}[label=$\rightarrow$]
+        \item Create a TMDB account if you don't have one.
+        \item Enter the TMDB website and generate an API key.
+    \end{enumerate}
+    \item Modify the configuration file. Open the \texttt{data/include.json} file and update the following fields: \texttt{db\_server}, \texttt{db\_user}, \texttt{db\_pass}, \texttt{db\_name}, \texttt{api\_key}. to match the respective values of your setup.
+    \item Start the PHP server. This can be done multiple ways, such as:
+    \begin{enumerate}[label=$\rightarrow$]
+        \item Entering the following command in a terminal from the source folder: \texttt{php -S localhost:<port>}
+        \item Using XAMPP or WAMP.
+    \end{enumerate}
+\end{enumerate}
 
 \end{document}

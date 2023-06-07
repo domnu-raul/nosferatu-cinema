@@ -1,4 +1,7 @@
 /includes/database.inc.php
+/data/include_2.json
+documentation-tex
+documentation-tex/*
 # LaTeX build files
 *.aux
 *.log

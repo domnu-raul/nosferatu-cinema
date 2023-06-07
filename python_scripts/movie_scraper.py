@@ -1,7 +1,18 @@
 import requests
 import mysql.connector
+import json
 
-api_key = '64971d742285741b35e7a6716621400c'
+with open("../data.json") as json_file:
+    json_data = json_file.read()
+
+data = json.loads(json_data)
+
+api_key = data['api_key']
+db_server = data['db_server']
+db_user = data['db_user']
+db_pass = data['db_pass']
+db_name = data['db_name']
+
 popular_movies_url = f'https://api.themoviedb.org/3/movie/popular?api_key={api_key}'
 
 
@@ -26,10 +37,10 @@ for page in range(1, 6):
         results.append(r)
 
 cnx = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='cinemadb'
+    host=db_server,
+    user=db_user,
+    password=db_pass,
+    database=db_name
 )
 
 cursor = cnx.cursor()

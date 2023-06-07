@@ -1,12 +1,23 @@
 import random
 import datetime
 import mysql.connector
+import json
+
+with open("../data.json") as json_file:
+    json_data = json_file.read()
+
+data = json.loads(json_data)
+
+db_server = data['db_server']
+db_user = data['db_user']
+db_pass = data['db_pass']
+db_name = data['db_name']
 
 cnx = mysql.connector.connect(
-    host='localhost',
-    user='root',
-    password='',
-    database='cinemadb'
+    host=db_server,
+    user=db_user,
+    password=db_pass,
+    database=db_name
 )
 
 cursor = cnx.cursor()

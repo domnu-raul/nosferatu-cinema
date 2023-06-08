@@ -1,6 +1,7 @@
 /data/include.json
 documentation-tex
 documentation-tex/*
+.gitignore
 # LaTeX build files
 *.aux
 *.log

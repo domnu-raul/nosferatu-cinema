@@ -78,8 +78,7 @@
 </table>
 <div class="table-pagination">
     <?php
-    $page_count = $total_results / $entries_per_page;
-    $page_count = $page_count >= 1 ? $page_count : 1;
+    $page_count = $total_results / $entries_per_page + 1;
 
     for ($i = 1; $i <= $page_count; $i++) {
         $active = $i == $page_num ? "id=\"active-page\"" : "";

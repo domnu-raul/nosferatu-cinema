@@ -4,6 +4,14 @@
     grid-template-columns: 1fr;
 }
 
+a {
+    text-decoration: none;
+    color: var(--magenta-color);
+}
+
+a:hover {
+    color: var(--red-color)
+}
 
 @media only screen and (max-width: 768px) {
     .wrapper {

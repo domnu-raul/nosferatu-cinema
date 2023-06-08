@@ -2,7 +2,7 @@
 \usepackage[a4paper, margin=.85in]{geometry}
 \usepackage[none]{hyphenat}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref, enumitem}
+\usepackage{hyperref, nameref, enumitem}
 \usepackage{xcolor}
 
 \hypersetup{
@@ -19,6 +19,7 @@ West University of Timisoara\\
 \begin{document}
 \raggedright
 \maketitle
+\tableofcontents
 
 \section*{Introduction}
     \href{https://github.com/domnu-raul/nosferatu-cinema/}{\textcolor{cyan}{Nosferatu Cinema}} is a fictional cinema for which I built a website for. The homepage displays movies that will be screened in the coming week. Visitors can check all screening schedules on the \texttt{movies} page, and they can also filter by selecting a specific movie. Although creating an account and logging in doesn't provide additional features on the site, an \texttt{admin} user gains access to the \texttt{dashboard} page, where they can add or remove movies and screenings from the database. The project makes use of data from the TMDB API, which provides movie data such as titles, runtimes, and other information.
@@ -84,6 +85,8 @@ West University of Timisoara\\
 From the visitor's perspective, the site has the basic functionality of viewing data of interest, such as what movies are currently displayed in the cinema, and the date and time at which they can see them. It's worth noting that the average user can only see the screening schedules only for the following 7 days(inclusive.).
 
 \begin{enumerate}[label=$-$]
+    \item\texttt{about} page: provides the visitors with all information needed about the website.
+    
     \item\texttt{home} page: displays all movies that are scheduled to screen in the following week. Data displayed: titles, posters, description, on hover --- runtimes and director. Clicking on any movie will send the user to the \texttt{movies} page, with the movie's id in the GET array, such that the page only displays the screening schedule of that movie.
 
     \item\texttt{movies} page: displays the screening schedule for the following week. Additionally, clicking on any movie will filter to only show the screening schedule of the selected movie.
@@ -115,6 +118,8 @@ In developing this website, I had to combine various technologies to get the des
 \end{enumerate}
 
 \section*{User Instructions}
+\label{sec:manual}
+\addcontentsline{toc}{section}{\nameref{sec:manual}}
 
 For using this web app, one can follow the steps below:
 \begin{enumerate}

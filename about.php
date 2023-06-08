@@ -17,46 +17,29 @@
         <span></span>
 
         <section>
-            <h2>Immersive Movie Experience</h2>
-            <p>Step into a world of captivating storytelling, thrilling adventures, and unforgettable moments. Cinema
-                Nosferatu is dedicated to providing you with an immersive movie experience that will transport you to
-                different worlds and evoke a range of emotions. From heartwarming dramas to action-packed blockbusters,
-                we curate a diverse selection of movies to cater to all tastes and preferences.</p>
+            <h2>About</h2>
+            <p>At Nosferatu Cinema, we try to offer the best services possible to our customers. This is why there are over 50 screenings per week, and why we put so much effort in designing this website. In this about page, you will learn about the functionalities of this website and the process of developing it.</p>
         </section>
 
         <section>
-            <h2>Cutting-Edge Technologies</h2>
-            <p>Our website is built using a combination of cutting-edge technologies to ensure seamless functionality
-                and an intuitive user interface. We leverage the power of PHP, MySQL, and Apache (XAMPP) to handle the
-                backend operations, ensuring efficient data management and retrieval. JavaScript breathes life into our
-                website, enhancing interactivity and delivering dynamic content. HTML and CSS work together to create
-                visually stunning pages, while jQuery and AJAX enable smooth and responsive user interactions.</p>
+            <h2>Functionalities</h2>
+            <p>The user experience was carefully developed to provide a satisfying experience for the visitors of the website. Navigation can be done with ease using the header buttons, and filtering information was made easily accesible by just clicking on a movie in the <b>home</b> or <b>movies</b> pages.</p>
+            <p>Meanwhile, our dedicated <b>dashboard</b> page empowers our admins with all functionalities needed to manage the database in an easy and intuitive manner. Improving our user experience by enabling fast updates.</p>
+        </section>
+
+        <section>
+            <h2>Technologies Used</h2>
+            <p>To ensure flawless functionality and an intuitive user interface, our website was developed with a blend of cutting-edge technologies. To ensure efficient data management and retrieval, we used a MySQL database to store all information, for communicating with this database, PHP and Apache(XAMPP) were used to perform the server-side operations. For the front end, JavaScript and jQuery were used to provide dynamic functionality, especially jQuery's AJAX functionality, which enabled our admins to modify data in real-time, without the need of reloading the page.</p>
         </section>
 
         <section>
             <h2>Powered by TMDB API</h2>
-            <p>To provide you with up-to-date and comprehensive movie information, we integrate the TMDB API (The Movie
-                Database) into our website. This API allows us to fetch movie data, including titles, descriptions,
-                posters, and more, ensuring that you have all the essential details at your fingertips. With the power
-                of TMDB, we bring you an extensive movie library to explore and discover your next cinematic adventure.
-            </p>
+            <p>All of this would not have been possible without the help of the TMDB API. We integrated this API to fetch all movie data displayed, ensuring you have quick access to all the essential details when choosing a movie to watch. With the power of this API, our administrators are able to append movie details to the database blazingly fast, further improving the user experience.</p>
         </section>
 
         <section>
-            <h2>User-Friendly Features</h2>
-            <p>At Cinema Nosferatu, we prioritize user convenience and satisfaction. Our website is designed with
-                user-friendly features to enhance your browsing experience. As a regular user, you can easily browse and
-                discover movies that are screening in the current week, helping you plan your movie outings with ease.
-                Meanwhile, our dedicated admin dashboard empowers administrators to manage and customize the screening
-                schedules, add new movies to our database, and make necessary adjustments based on user demand.</p>
-        </section>
-
-        <section>
-            <h2>Passion for Film</h2>
-            <p>Cinema Nosferatu is a project fueled by our passion for the art of filmmaking. Our team of dedicated
-                students and movie enthusiasts have poured their heart and soul into creating this platform. We strive
-                to share our love for cinema with you and provide a platform that celebrates the magic of storytelling
-                through the silver screen.</p>
+            <h2>Note from the Author</h2>
+            <p>Nosferatu Cinema is one of my most ambitious projects yet. If you want to learn more about why and how I developed it, visit the <a href="https://github.com/domnu-raul/nosferatu-cinema">Github</a> page, where you can also see the <a href="https://github.com/domnu-raul/nosferatu-cinema/tree/main/documentation-tex">documentation</a>.</p>
         </section>
         <footer>
             

@@ -5,4 +5,4 @@ provide additional features on the site, an admin user gains access to the dashb
 add or remove movies and screenings from the database. The project makes use of data from the TMDB
 API, which provides movie data such as titles, runtimes, and other information.
 
-This is a school project, for more information view the documentation.
+This is a school project, for more information view the [documentation](https://github.com/domnu-raul/nosferatu-cinema/blob/main/documentation-tex/documentation.pdf).
